@@ -1,25 +1,21 @@
-//Math
+//Switch
 
-let decimal = 34.511111111111;
+//condicional múltiple
 
-//Redondear números
-console.log(Math.floor(decimal)); // abajo
-console.log(Math.ceil(decimal)); // arriba
-console.log(Math.round(decimal));
-//>= 5 -> ceil | < 5 -> floor
+let numero = 20;
+switch (numero) {
+  case 10:
+    console.log("El número es 10");
+    break;
+  case 20:
+    console.log("El número es 20");
+    break;
+  case 50:
+    console.log("El número es 50");
+    break;
+  default:
+    //acciones
+    console.log("No coincide con ninguna opción");
 
-//Máximo de una lista
-console.log(Math.max(56.7, 100, 2000, 34, -500000));
-
-//Mínimo de una lista
-console.log(Math.min(56.7, 100, 2000, 34, -500000));
-
-let numeroString = "67.8734";
-
-let stringNumber = Number(numeroString);
-
-//Convertir string a number entero
-let numeroEntero = parseInt(numeroString);
-
-//Convertir string a number decimal o float
-let numeroDecimal = parseFloat(numeroString);
+    break;
+}
