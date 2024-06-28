@@ -1,78 +1,62 @@
-//Funciones o métodos
-//Código encapsulado que podemos ejecutar cuando sea necesario.
+//Callbacks
 
-// alert("Hola mundo!");
-// prompt("Ingrese sus sueños y hágalos realidad");
-// let validación = confirm("Soy feo?");
+/*
+Son funciones que se pasan como argumentos de otra función 
 
-//Funciones declarativas
-//Se declaran con la palabra reservada 'function' y un nombre
+*/
 
-function saludarPersona() {
-  //acciones
-  //procesos
-  let nombre = prompt("Ingrese su nombre");
-  console.log(`Bienvenid@ ${nombre} al curso de javascript`);
-}
-
-// saludarPersona()
-
-//Funciones anónimas o de expresión
-//Se declaran como variables constantes y se le asigna una función sin nombre
-
-const palabraAlReves = function () {
-  let palabra = prompt("Ingrese la palabra");
-  let invertida = palabra.split("").reverse().join("");
-
-  console.log(invertida);
+const cubo = function (num) {
+  return Math.pow(num, 3);
 };
 
-//Parámetros son datos que recibe una función entre los paréntesis y que se usan en los procesos. Al momento de ejecutarla le envío argumentos a la función en representación de los parámetros.
-
-function suma(num1, num2) {
-  console.log(`${num1} + ${num2} = ${num1 + num2}`);
+function calculadoraBasica(num1, num2, action) {
+  switch (action) {
+    case "suma":
+      return `${num1} + ${num2} = ${num1 + num2}`;
+    case "resta":
+      return `${num1} - ${num2} = ${num1 - num2}`;
+    case "multiplicar":
+      return `${num1} x ${num2} = ${num1 * num2}`;
+    case "division":
+      return `${num1} / ${num2} = ${num1 / num2}`;
+    case "cubo":
+      return `Cubo de num1 = ${cubo(num1)} | Cubo de num2 = ${cubo(num2)}`;
+    default:
+      return "La acción no es válida";
+  }
 }
 
-suma(23, 45);
+//sort
+const numeros = [37, 11, 2, 15, 56, 52, 8, 48, 100];
 
-//Ejercicio 2
-function capitalizarNombre(nombre, apellido) {
-  let nombreCapitalizado = nombre.at(0).toUpperCase() + nombre.substr(1);
-  //pablo
-  //P
-  //ablo
-  //Pablo
+numeros.sort((ant, sig) => ant - sig);
 
-  let apellidoCapitalizado = apellido.at(0).toUpperCase() + apellido.substr(1);
+//Filter
+//Retorna un nuevo arreglo con los elementos que cumplen una condición
+let pares = numeros.filter(function (numero) {
+  return numero % 2 === 0;
+});
+let mayor50 = numeros.filter((num) => num > 50);
 
-  console.log(nombreCapitalizado + " " + apellidoCapitalizado);
-}
+// Find
+//Devuelve el primer elemento que coincida con la condición
+let alumnos = ["Jimena", "Romina", "Alfredo", "Gabriela", "Alfredo"];
 
-// capitalizarNombre("alfredo", "gonzalez");
+let resultadoBusqueda = alumnos.find((alumno) => alumno === "Alfredo");
 
-let nombres = "pablo daniel eusebio".split(" "); //3 nombres Pablo Daniel Eusebio
+// const buscarAlumno = (user = prompt("Ingrese el nombre")) => {
+//   return alumnos.find((alumno) => alumno === user);
+// };
 
-function capitalizarPalabra(palabra) {
-  let palabraCapitalizada = palabra.at(0).toUpperCase() + palabra.substr(1);
+// let encontrado = buscarAlumno();
 
-  console.log(palabraCapitalizada);
-}
+//FindIndex
+//Devuelve la posicion del elemento que cumple la condición
+let indice = alumnos.findIndex((alumno) => alumno === "Gabriela");
+// alumnos.indexOf("Gabriela");
+let indiceMayor50 = numeros.findIndex((num) => num > 10);
 
-for (let i = 0; i < nombres.length; i++) {
-  capitalizarPalabra(nombres[i]);
-}
+//reduce?
 
-let cosa = "queso";
-capitalizarPalabra(cosa);
-
-//Parámetros por defecto
-const sumaDefault = function (num1 = 0, num2 = 0) {
-  console.log(`${num1} + ${num2} = ${num1 + num2}`);
-};
-
-function saludarPersonaDefault(nombre = "Invitado") {
-  //acciones
-  //procesos
-
-  console.log(`Bienvenid@ ${nombre} al curso de javascript`);
-}
+//forEach
+alumnos.forEach((alumno, index) => console.log(`${index + 1} - ${alumno}`));
